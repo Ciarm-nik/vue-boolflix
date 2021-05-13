@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +9,23 @@
     <script src="style.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css"
+        integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw=="
+        crossorigin="anonymous" />
 </head>
+
 <body>
     <div id="app">
-        <div>
-            <input type="text">
-            <button>Cerca</button>
-        </div>
-        <ul>
-            <li>Titolo</li>
-            <li>Titolo originale</li>
-            <li>Lingua</li>
-            <li>Voto</li>
-        </ul>
+        <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text" name="" value="">
+        <button @click="utent_search(query)" type="button" name="button">cerca</button>
+            <div v-for="film in films">
+                    <p>Titolo: {{film.original_title}}</p>
+                    <p>Titolo Originale: {{film.title}}</p>
+                    <p>Lingua:{{film.original_language}}</p>
+                    <p>Voto: {{film.vote_average}}</p>
+            </div>
     </div>
-
-
     <script src="script.js"></script>
 </body>
+
 </html>
