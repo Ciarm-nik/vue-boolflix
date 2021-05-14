@@ -25,13 +25,20 @@
         <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text" name=""
             value="">
         <button @click="utent_search(query)" type="button" name="button">cerca</button>
-        <div v-for="film in films">
-            <p>Titolo: {{film.original_title}}</p>
-            <p>Titolo Originale: {{film.title}}</p>
-            <p>Lingua:{{film.original_language}}
-                 <span id="flag"> <img :src="'flags/1x1/' + film.original_language +'.svg'"></span>
+
+        <div v-for="film in media">
+            <!-- Aggiungo un v:bind sull'immagine e una width di 342 + la path recuperata su postman -->
+            <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
+            <p v-if="film.media_type === 'movie'">Titolo: {{film.title}}</p>
+            <p v-if="film.media_type === 'tv'">Titolo: {{film.name}}</p>
+            <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p>
+            <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p>
+            <p>Type: {{film.media_type}}</p>
+            <!-- Ricerca bandiera per lingua -->
+            <span id="flag"> <img :src="'flags/1x1/' + film.original_language +'.svg'"></span>
             </p>
             <p>Voto: {{film.vote_average*0.5}}
+                <!-- If ternario per stampare le stelle presenti -->
                 <i :class="[index <= parseInt(film.vote_average)*0.5 ? solid : '']" v-for="index in 5"
                     class="far fa-star"></i>
             </p>
