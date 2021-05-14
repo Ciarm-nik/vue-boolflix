@@ -2,10 +2,10 @@ new Vue({
     el: '#app',
     data: {
         films: [],
-        query: ''
-
+        query: '',
+        solid: "fas",
+        be: "en"
     },
-
     methods: {
         utent_search(query) {
 
@@ -21,5 +21,8 @@ new Vue({
                 })
             this.query = '';
         }
+    },
+    computed: {
+
     }
 })
