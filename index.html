@@ -29,9 +29,8 @@
                 </div>
             </div>
             <div class="nav-right">
-                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text"
-                    name="" value="">
-                <button @click="utent_search(query)" type="button" name="button">cerca</button>
+                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text" name="" value="" class="search_box">
+                <button class="btn" @click="utent_search(query)" type="button" name="button">cerca</button>
             </div>
         </nav>
 
@@ -49,8 +48,8 @@
                      <div class="overlay">
                         <p v-if="film.media_type === 'movie'"><strong>Titolo:</strong> {{film.title}}</p>
                         <p v-if="film.media_type === 'tv'">Titolo: {{film.name}}</p>
-                        <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p>
-                        <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p>
+                        <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p><br>
+                        <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p><br>
                         <p>Tipo: {{film.media_type}}</p>
     
                         <!-- Ricerca bandiera per lingua -->
@@ -64,8 +63,8 @@
                                 class="far fa-star"></i>
                         </p>
                         <!-- Aggiungo una sezione per cercare il cast -->
-                        <button @click="cast_search(film.id, film.media_type)">Scopri il cast:  </button>
-                        <h4>Cast: </h4>
+                        <button @click="cast_search(film.id, film.media_type)">Scopri il cast: </button>
+                        <h4>Cast:  {{cast.name}} </h4>
                         <p class="descrizione" v-if="film.media_type === 'movie'">Descrizione: {{film.overview}}</p>
                         <p class="descrizione" v-if="film.media_type === 'tv'">Descrizione: {{film.overview}}</p>
                      </div>

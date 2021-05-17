@@ -54,6 +54,22 @@ nav {
     height: 14px;
 }
 
+.search_box {
+    width: 300px;
+    height: 20px;
+    padding: 20px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0.5px solid #fff;
+    margin-right: 10px;
+}
+
+.btn {
+padding: 5px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 /* Sezione Immagini */
 
 .section-films {
@@ -106,6 +122,6 @@ nav {
 
 .not_found{
     width: 185px;
-    height: 300px;
+    height: 360px;
     object-fit: cover;
 }

@@ -5,7 +5,7 @@ new Vue({
         query: '',
         solid: "fas",
         image: null,
-        ricerca: false,
+        // ricerca: false,
         cast: []
     },
     methods: {
