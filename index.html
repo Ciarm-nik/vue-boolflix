@@ -27,36 +27,48 @@
                 <div class="logo">
                     <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
                 </div>
-
             </div>
             <div class="nav-right">
-                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text" name=""
-                value="">
-            <button @click="utent_search(query)" type="button" name="button">cerca</button>
+                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text"
+                    name="" value="">
+                <button @click="utent_search(query)" type="button" name="button">cerca</button>
             </div>
-           
         </nav>
-     
 
-        <div v-for="film in media">
-            <!-- Aggiungo un v:bind sull'immagine e una width di 342 + la path recuperata su postman -->
-            <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="">
-            <p v-if="film.media_type === 'movie'">Titolo: {{film.title}}</p>
-            <p v-if="film.media_type === 'tv'">Titolo: {{film.name}}</p>
-            <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p>
-            <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p>
-            <p>Type: {{film.media_type}}</p>
-            <!-- Ricerca bandiera per lingua -->
-            <span id="flag"> <img :src="'flags/1x1/' + film.original_language +'.svg'"></span>
-            </p>
-            <!-- Nascondo il voto in numero da 0 a 5 -->
-            <!-- {{film.vote_average*0.5}} -->
-             <p>Voto:
-                <!-- If ternario per stampare le stelle presenti -->
-                <i :class="[index <= parseInt(film.vote_average)*0.5 ? solid : '']" v-for="index in 5"
-                    class="far fa-star"></i>
-            </p>
+
+        <div class="section-films">
+            <div class="film-card" v-for="film in media">
+                <div class="film-content">
+                    <div class="img-box">
+                          <!-- Aggiungo un v:bind sull'immagine e una width di 342 + la path recuperata su postman -->
+                    <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="">
+                    </div>
+                     <div class="overlay">
+                        <p v-if="film.media_type === 'movie'"><strong>Titolo:</strong> {{film.title}}</p>
+                        <p v-if="film.media_type === 'tv'">Titolo: {{film.name}}</p>
+                        <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p>
+                        <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p>
+                        <p>Tipo: {{film.media_type}}</p>
+    
+                        <!-- Ricerca bandiera per lingua -->
+                        <span id="flag">Lingua: <img :src="'flags/1x1/' + film.original_language +'.svg'"></span>
+                        </p>
+                        <!-- Nascondo il voto in numero da 0 a 5 -->
+                        <!-- {{film.vote_average*0.5}} -->
+                        <p>Voto:
+                            <!-- If ternario per stampare le stelle presenti -->
+                            <i :class="[index <= parseInt(film.vote_average)*0.5 ? solid : '']" v-for="index in 5"
+                                class="far fa-star"></i>
+                        </p>
+                        <p class="descrizione" v-if="film.media_type === 'movie'">Descrizione: {{film.overview}}</p>
+                        <p class="descrizione" v-if="film.media_type === 'tv'">Descrizione: {{film.overview}}</p>
+                     </div>
+                   
+                </div>
+            </div>
         </div>
+
+
     </div>
     <script src="script.js"></script>
 </body>
