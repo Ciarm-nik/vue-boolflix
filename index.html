@@ -29,7 +29,8 @@
                 </div>
             </div>
             <div class="nav-right">
-                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text" name="" value="" class="search_box">
+                <input placeholder="cerca un film" v-model="query" @keyup.enter="utent_search(query)" type="text"
+                    name="" value="" class="search_box">
                 <button class="btn" @click="utent_search(query)" type="button" name="button">cerca</button>
             </div>
         </nav>
@@ -39,19 +40,20 @@
             <div class="film-card" v-for="film in media">
                 <div class="film-content">
                     <div class="img-box">
-                          <!-- Aggiungo un v:bind sull'immagine e una width di 185 + la path recuperata su postman -->
-                    <img v-if="film.poster_path !==null" :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="">
-                    <!-- Aggiungo un'immagine not_found se la copertina non è disponibile -->
-                    <img class="not_found" v-else="image: true" src="img/not_found.jpg" alt="">
-                   
+                        <!-- Aggiungo un v:bind sull'immagine e una width di 185 + la path recuperata su postman -->
+                        <img v-if="film.poster_path !==null" :src="'https://image.tmdb.org/t/p/w185' + film.poster_path"
+                            alt="">
+                        <!-- Aggiungo un'immagine not_found se la copertina non è disponibile -->
+                        <img class="not_found" v-else="image: true" src="img/no_image_available.jpeg" alt="">
+
                     </div>
-                     <div class="overlay">
+                    <div class="overlay">
                         <p v-if="film.media_type === 'movie'"><strong>Titolo:</strong> {{film.title}}</p>
                         <p v-if="film.media_type === 'tv'">Titolo: {{film.name}}</p>
                         <p v-if="film.media_type === 'movie'">Titolo Originale: {{film.original_title}}</p><br>
                         <p v-if="film.media_type === 'tv'">Titolo Originale: {{film.original_name}}</p><br>
                         <p>Tipo: {{film.media_type}}</p>
-    
+
                         <!-- Ricerca bandiera per lingua -->
                         <span id="flag">Lingua: <img :src="'flags/1x1/' + film.original_language +'.svg'"></span>
                         </p>
@@ -63,12 +65,19 @@
                                 class="far fa-star"></i>
                         </p>
                         <!-- Aggiungo una sezione per cercare il cast -->
-                        <button @click="cast_search(film.id, film.media_type)">Scopri il cast: </button>
-                        <h4>Cast:  {{cast.name}} </h4>
-                        <p class="descrizione" v-if="film.media_type === 'movie'">Descrizione: {{film.overview}}</p>
-                        <p class="descrizione" v-if="film.media_type === 'tv'">Descrizione: {{film.overview}}</p>
-                     </div>
-                   
+                        <button class="btn-cast" @click="cast_search(film.id, film.media_type)">Scopri il cast:
+                        </button>
+                        <ul v-for="attori in cast.slice(0,5)">
+                        <li class="cast">{{attori.name}}</li>    
+                        </ul><br>
+                        <div class="descrizione_2">
+                            <p class="descrizione" v-if="film.media_type === 'movie'"><strong>Descrizione:</strong>
+                                {{film.overview}}</p>
+                            <p class="descrizione" v-if="film.media_type === 'tv'">Descrizione: {{film.overview}}</p>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
