@@ -4,6 +4,7 @@ new Vue({
         media: [],
         query: '',
         solid: "fas",
+        image: null
     },
     methods: {
         utent_search(query) {
@@ -19,7 +20,14 @@ new Vue({
                     this.media = res.data.results;
                 })
             this.query = '';
-        }
+        },
+        // getImgSrc (media) {
+        //     if(media.poster_path) {
+        //         return 'https://image.tmdb.org/t/p/w185' + media.poster_path
+        //     }else {
+        //         return "../img/not_found.jpg"
+        //     }
+        // }
     },
     computed: {
 

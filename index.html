@@ -40,8 +40,11 @@
             <div class="film-card" v-for="film in media">
                 <div class="film-content">
                     <div class="img-box">
-                          <!-- Aggiungo un v:bind sull'immagine e una width di 342 + la path recuperata su postman -->
-                    <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="">
+                          <!-- Aggiungo un v:bind sull'immagine e una width di 185 + la path recuperata su postman -->
+                    <img v-if="film.poster_path !==null" :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="">
+                    <!-- Aggiungo un'immagine not_found se la copertina non è disponibile -->
+                    <img class="not_found" v-else="image: true" src="img/not_found.jpg" alt="">
+                   
                     </div>
                      <div class="overlay">
                         <p v-if="film.media_type === 'movie'"><strong>Titolo:</strong> {{film.title}}</p>

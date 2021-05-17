@@ -103,3 +103,9 @@ nav {
 .descrizione {
     font-size: 12px;
 }
+
+.not_found{
+    width: 185px;
+    height: 300px;
+    object-fit: cover;
+}
