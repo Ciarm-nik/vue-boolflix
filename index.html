@@ -63,6 +63,9 @@
                             <i :class="[index <= parseInt(film.vote_average)*0.5 ? solid : '']" v-for="index in 5"
                                 class="far fa-star"></i>
                         </p>
+                        <!-- Aggiungo una sezione per cercare il cast -->
+                        <button @click="cast_search(film.id, film.media_type)">Scopri il cast:  </button>
+                        <h4>Cast: </h4>
                         <p class="descrizione" v-if="film.media_type === 'movie'">Descrizione: {{film.overview}}</p>
                         <p class="descrizione" v-if="film.media_type === 'tv'">Descrizione: {{film.overview}}</p>
                      </div>
