@@ -37,7 +37,7 @@
 
 
         <div class="section-films">
-            <div class="film-card" v-for="film in media">
+            <div v-if="film.media_type != 'person'" class="film-card" v-for="film in media">
                 <div class="film-content">
                     <div class="img-box">
                         <!-- Aggiungo un v:bind sull'immagine e una width di 185 + la path recuperata su postman -->
