@@ -41,10 +41,18 @@ new Vue({
             })
             .then((res) => {
                 // return res.data.cast.slice(0, 5);
-                this.cast = res.data.cast.slice(0, 5);
-                this.cast.forEach ((item) => {
-                    console.log(item.name)
-                });
+                // this.cast = res.data.cast.slice(0, 5);
+                const media = this.media.find((elemento)=>{
+                    return elemento.id === id
+                })
+
+                // console.log(media)
+                // media.cast = res.data.cast.slice(0, 5);
+                this.$set(media, "cast", res.data.cast.slice(0, 5))
+
+                // this.cast.forEach ((item) => {
+                //     console.log(item.name)
+                // });
             })
         },
     },
